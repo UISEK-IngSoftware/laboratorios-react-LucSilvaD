@@ -4,7 +4,7 @@ import "./Header.css";
 
 export default function Header() {
     return (
-        <header className="header">
+        <header className="pokedex-header">
             <Container>
                 <AppBar position="static">
                     <Toolbar>
