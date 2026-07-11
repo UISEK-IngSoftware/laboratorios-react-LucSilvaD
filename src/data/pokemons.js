@@ -17,5 +17,22 @@ export const pokemons = [
     image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png",
     type: "water"
   },
-  // Agregar más pokemons...
+  {
+    id: 25,
+    name: "Pikachu",
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+    type: "electric"
+  },
+  {
+    id: 39,
+    name: "Jigglypuff",
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/39.png",
+    type: "normal"
+  },
+  {
+    id: 52,
+    name: "Meowth",
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/52.png",
+    type: "normal"
+  },
 ];
