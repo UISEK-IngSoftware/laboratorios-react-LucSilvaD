@@ -2,11 +2,13 @@ import { Card, CardActions, CardContent, CardMedia, Typography, Button } from "@
 import "./pokemonCard.css";
 
 export default function PokemonCard({ pokemon }) {
+  const mediaUrl = import.meta.env.VITE_MEDIA_URL;
+  pokemon.image = mediaUrl + pokemon.picture;
   return (
     <Card>
         <CardMedia
             component="img"
-            image={pokemon.image}
+            image={`${mediaUrl}/${pokemon.picture}`}
             alt={pokemon.name}
             height={200}
         />
