@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import PokemonCard from "../components/PokemonCard";
 import "./pokemonList.css";
 import { useState, useEffect } from "react";
-import { getPokemonList } from "../services/PokemonServise";
+import { getPokemonList } from "../services/PokemonService";
 
 export default function PokemonList() {
     const [pokemons, setPokemons] = useState([]);
