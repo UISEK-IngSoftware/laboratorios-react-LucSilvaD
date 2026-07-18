@@ -4,24 +4,27 @@ import "./Header.css";
 
 export default function Header() {
     return (
-        <header className="pokedex-header">
-            <Container>
-                <AppBar position="static">
-                    <Toolbar>
-                        <div className="image-container">
-                            <img src={pokedexLogo} alt="Pokedex Logo" height={100} />
-                        </div>
-                    </Toolbar>
-                    <Toolbar>
-                        <Button color="inherit" href="/">
-                            Inicio
-                        </Button>
-                        <Button color="inherit" href="/add">
-                            Agregar Pokemon
-                        </Button>
-                    </Toolbar>
-                </AppBar>
-            </Container>
-        </header>
-    )
+      <header className="pokedex-header">
+        <Container>
+          <AppBar position="static">
+            <Toolbar>
+              <div className="image-container">
+                <img src={pokedexLogo} alt="Pokedex Logo" height={100} />
+              </div>
+            </Toolbar>
+            <Toolbar>
+              <Button color="inherit" href="/">
+                Inicio
+              </Button>
+              <Button color="inherit" href="/add">
+                Nuevo Pokémon
+              </Button>
+              <Button color="inherit" href="/login">
+                iniciar sesión
+              </Button>
+            </Toolbar>
+          </AppBar>
+        </Container>
+      </header>
+    );
 }

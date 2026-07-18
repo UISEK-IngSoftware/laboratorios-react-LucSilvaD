@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import PokemonList from "./pages/PokemonList";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PokemonForm from "./components/PokemonForm";
+import LoginPage from "./pages/loginPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<PokemonList />} />
             <Route path="/add" element={<PokemonForm />} />
+            <Route path="/login" element={<LoginPage />} />
           </Routes>
         </BrowserRouter>
 
