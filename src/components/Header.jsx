@@ -1,8 +1,17 @@
 import { Container, AppBar, Toolbar, Button } from "@mui/material";
 import pokedexLogo from "../assets/pokedex-logo.png";
 import "./Header.css";
+import { isLoggedIn, logout } from "../services/authService";
 
 export default function Header() {
+
+    const handleLogout = async () => {
+        await logout();
+        alert("Sesión cerrada correctamente");
+        window.location.href = "/";
+
+    }
+
     return (
       <header className="pokedex-header">
         <Container>
@@ -16,12 +25,21 @@ export default function Header() {
               <Button color="inherit" href="/">
                 Inicio
               </Button>
-              <Button color="inherit" href="/add">
-                Nuevo Pokémon
-              </Button>
-              <Button color="inherit" href="/login">
-                iniciar sesión
-              </Button>
+              {isLoggedIn() && (
+                <>
+                  <Button color="inherit" href="/add">
+                    Nuevo Pokémon
+                  </Button>
+                  <Button color="inherit" onClick={handleLogout}>
+                    Cerrar sesión
+                  </Button>
+                </>
+              )}
+              {!isLoggedIn() && (
+                <Button color="inherit" href="/login">
+                  iniciar sesión
+                </Button>
+              )}
             </Toolbar>
           </AppBar>
         </Container>

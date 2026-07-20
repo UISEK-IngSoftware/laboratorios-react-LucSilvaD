@@ -10,7 +10,7 @@ const apiClient = axios.create({
 
 
 apiClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem("access_token");
+  const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -23,6 +23,32 @@ export const getPokemonList = async () => {
     return response.data;
   } catch (error) {
     console.error("Error obteniendo lista de pokemons:", error);
+    throw error;
+  }
+};
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      resolve(reader.result);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+export const addPokemon = async (pokemonData) => {
+  let pictureBase64 = ""
+  if (pokemonData.picture) {
+    pictureBase64 = await fileToBase64(pokemonData.picture);
+  }
+  const payload = { ...pokemonData, picture: pictureBase64 };
+  try {
+    const response = await apiClient.post("/pokemons/", payload);
+    return response.data;
+  } catch (error) {
+    console.error("Error agregando pokemon:", error);
     throw error;
   }
 };

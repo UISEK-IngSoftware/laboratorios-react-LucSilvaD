@@ -13,7 +13,7 @@ const authClient = axios.create({
 
 export const login = async (username, password) => {
     try {
-        const response = await authClient.post("/login", {
+        const response = await authClient.post("/token/", {
           username: username,
           password: password,
           grant_type: "password",
@@ -26,4 +26,27 @@ export const login = async (username, password) => {
     }
 }
 
+// ---------------------------------------------------------------------------
 
+export const isLoggedIn = () => {
+  const token = localStorage.getItem('token');
+  return !!token;
+}
+
+export const logout = () => {
+  const token = localStorage.getItem('token');
+  if (!token) return;
+
+  try {
+    authClient.post('/revoke_token/', {
+      token: token,
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
+    });
+  } catch (error) {
+    console.error('Error al cerrar sesión:', error);
+  };
+
+  localStorage.removeItem('token');
+
+}
